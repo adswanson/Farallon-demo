@@ -11,6 +11,7 @@
   <ItemGroup>
     <Folder Include="Controllers\" />
     <Folder Include="DataAccess\" />
+    <Folder Include="Views\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Utilities\Utilities.csproj" />

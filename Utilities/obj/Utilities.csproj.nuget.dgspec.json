@@ -1,26 +1,27 @@
 {
   "format": 1,
   "restore": {
-    "/Users/andrewswanson/Projects/FarallonProject/Utilities/Utilities.csproj": {}
+    "C:\\Users\\Andrew Swanson\\Source\\Repos\\adswanson\\Farallon-demo\\Utilities\\Utilities.csproj": {}
   },
   "projects": {
-    "/Users/andrewswanson/Projects/FarallonProject/Utilities/Utilities.csproj": {
+    "C:\\Users\\Andrew Swanson\\Source\\Repos\\adswanson\\Farallon-demo\\Utilities\\Utilities.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/andrewswanson/Projects/FarallonProject/Utilities/Utilities.csproj",
+        "projectUniqueName": "C:\\Users\\Andrew Swanson\\Source\\Repos\\adswanson\\Farallon-demo\\Utilities\\Utilities.csproj",
         "projectName": "Utilities",
-        "projectPath": "/Users/andrewswanson/Projects/FarallonProject/Utilities/Utilities.csproj",
-        "packagesPath": "/Users/andrewswanson/.nuget/packages/",
-        "outputPath": "/Users/andrewswanson/Projects/FarallonProject/Utilities/obj/",
+        "projectPath": "C:\\Users\\Andrew Swanson\\Source\\Repos\\adswanson\\Farallon-demo\\Utilities\\Utilities.csproj",
+        "packagesPath": "C:\\Users\\Andrew Swanson\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Andrew Swanson\\Source\\Repos\\adswanson\\Farallon-demo\\Utilities\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/andrewswanson/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\Andrew Swanson\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netstandard2.0"
         ],
         "sources": {
-          "/usr/local/share/dotnet/library-packs": {},
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -52,12 +53,11 @@
             "net47",
             "net471",
             "net472",
-            "net48",
-            "net481"
+            "net48"
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.302/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     }

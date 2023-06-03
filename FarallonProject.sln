@@ -1,15 +1,20 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 25.0.1705.5
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Investment.Component", "Investment.Component\Investment.Component.csproj", "{724D71CF-2D0C-4060-964A-8A1C06C3996D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Investment.Component", "Investment.Component\Investment.Component.csproj", "{724D71CF-2D0C-4060-964A-8A1C06C3996D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "resources", "resources", "{1624DD5B-AB52-4333-8CF5-646A9B781A13}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "data", "data", "{540A0DCB-F2D3-42B6-8783-F0900ADC61DB}"
+	ProjectSection(SolutionItems) = preProject
+		Portfolios.xml = Portfolios.xml
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utilities", "Utilities\Utilities.csproj", "{3A8B2D86-E969-4CCE-B03D-0482F6AAF8DF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Utilities", "Utilities\Utilities.csproj", "{3A8B2D86-E969-4CCE-B03D-0482F6AAF8DF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Investment.UI", "Investment.UI\Investment.UI.csproj", "{2C8AF208-DCBC-4125-B3E2-04D52F8C4506}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,14 +30,18 @@ Global
 		{3A8B2D86-E969-4CCE-B03D-0482F6AAF8DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3A8B2D86-E969-4CCE-B03D-0482F6AAF8DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3A8B2D86-E969-4CCE-B03D-0482F6AAF8DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C8AF208-DCBC-4125-B3E2-04D52F8C4506}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C8AF208-DCBC-4125-B3E2-04D52F8C4506}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C8AF208-DCBC-4125-B3E2-04D52F8C4506}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C8AF208-DCBC-4125-B3E2-04D52F8C4506}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {E0CB2FB7-A707-40E5-81B6-1EEF601C5AA7}
-	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{540A0DCB-F2D3-42B6-8783-F0900ADC61DB} = {1624DD5B-AB52-4333-8CF5-646A9B781A13}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E0CB2FB7-A707-40E5-81B6-1EEF601C5AA7}
 	EndGlobalSection
 EndGlobal
