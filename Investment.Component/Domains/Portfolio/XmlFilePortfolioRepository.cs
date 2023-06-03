@@ -8,7 +8,7 @@ namespace Investment.Component.Domains.Portfolio
 {
     internal sealed class XmlFilePortfolioRepository : IPortfolioRepository
     {
-        private readonly XmlDataProviderOptions _options;
+        private readonly XmlDataProviderAccessor _options;
         private readonly XmlSerializer _serializer;
 
         private IEnumerable<PortfolioRecord> Records
@@ -43,7 +43,7 @@ namespace Investment.Component.Domains.Portfolio
             }
         }
 
-        internal XmlFilePortfolioRepository(XmlDataProviderOptions dataProviderOptions)
+        internal XmlFilePortfolioRepository(XmlDataProviderAccessor dataProviderOptions)
         {
             _options = dataProviderOptions;
         }

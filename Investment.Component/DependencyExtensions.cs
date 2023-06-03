@@ -10,16 +10,14 @@ namespace Investment.Component
     {
         public static ContainerBuilder AddInvestmentDependencies(this ContainerBuilder containerBuilder)
         {
-            containerBuilder.RegisterTransient<ITradeLogRepository, XmlFileTradeLogRepository>();
+            containerBuilder
+                .RegisterTransient<IPortfolioHistoryPresenter, PortfolioHistoryPresenter>()
+                .RegisterTransient<ITradeLogRepository, XmlFileTradeLogRepository>()
+                .RegisterTransient<ISymbolRepository, XmlFileSymbolRepository>()
+                .RegisterSingleton<IXmlDataProviderAccessor, XmlDataProviderAccessor>();
 
             return containerBuilder;
         }
-
-        internal static ITradeLogRepository TradeLogRepository => new XmlFileTradeLogRepository();
-        internal static ISymbolRepository SymbolRepository => new XmlFileSymbolRepository();
-
-        public static IPortfolioHistoryPresenter GetPortfolioHistoryPresenter => 
-            new PortfolioHistoryPresenter(TradeLogRepository, SymbolRepository);
     }
 }
 

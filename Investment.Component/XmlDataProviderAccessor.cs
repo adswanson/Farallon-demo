@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
+﻿
 namespace Investment.Component
 {
-    public sealed class XmlDataProviderOptions : IXmlDataProviderOptions
+    internal sealed class XmlDataProviderAccessor : IXmlDataProviderAccessor
     {
         public string PortfolioXml { get; set; }
         public string TradeLogXml { get; set; }
