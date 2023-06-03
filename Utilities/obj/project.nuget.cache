@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "I93fuySuIhJw3aKxzdsh3CzDhaZoJfKipjc0x3P5XvDGRCE2ZTyLBzy2Sxn4ydRdQJ5F9ht8C8oP3WddSaANbA==",
+  "success": true,
+  "projectFilePath": "/Users/andrewswanson/Projects/FarallonProject/Utilities/Utilities.csproj",
+  "expectedPackageFiles": [
+    "/Users/andrewswanson/.nuget/packages/microsoft.netcore.platforms/1.1.0/microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "/Users/andrewswanson/.nuget/packages/netstandard.library/2.0.3/netstandard.library.2.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}
