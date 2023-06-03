@@ -1,6 +1,6 @@
 ﻿namespace Investment.Component
 {
-    public interface IXmlDataProviderAccessor
+    public interface IXmlDataContextAccessor
     {
         string PortfolioXml { get; set; }
         string SymbolXml { get; set; }

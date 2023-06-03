@@ -1,0 +1,13 @@
+﻿<XmlTradeLog>
+	<TradeLogEntries>
+		<TradeLogRecord>
+			<TradeLogId>0</TradeLogId>			
+			<PortfolioId>1</PortfolioId>
+			<SymbolId>0</SymbolId>
+			<Price>30.00</Price>
+			<TradeType>Buy</TradeType>
+			<TransactionDateUtc>2023-06-03T10:00:00+00:00</TransactionDateUtc>
+			<UnitAmount>10</UnitAmount>
+		</TradeLogRecord>
+	</TradeLogEntries>
+</XmlTradeLog>

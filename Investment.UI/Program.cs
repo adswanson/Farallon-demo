@@ -1,9 +1,7 @@
 ﻿using Investment.Component;
 using Investment.Component.Presenters;
+using Investment.UI.Services;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Utilities.DependencyInjection;
 
@@ -18,9 +16,8 @@ namespace Investment.UI
         static void Main()
         {
             var containerBuilder = new ContainerBuilder()
-                .RegisterTransient<IPortfolioHistoryView, MainForm>()
-                .RegisterTransient<IPortfolioHistoryPresenter, PortfolioHistoryPresenter>()
-                .AddInvestmentDependencies();
+                .AddApplicationDependencies()
+                .AddInvestmentDependencies<LocalXmlDataContextAccessor>();
 
             using(var container = containerBuilder.Build())
             {
@@ -28,12 +25,15 @@ namespace Investment.UI
 
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
-
-                // todo - dependency injection solution
                 Application.Run(new MainForm(presenter));
             }
+        }
 
+        private static ContainerBuilder AddApplicationDependencies(this ContainerBuilder builder)
+        {
+            builder.RegisterSingleton<IPortfolioHistoryView, MainForm>();
 
+            return builder;
         }
     }
 }
