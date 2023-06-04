@@ -26,6 +26,9 @@ namespace Investment.Component.Presenters
         public void Initialize(IPortfoliosView view)
         {
             _view = view;
+            _view.SetActivePortfolio(null);
+
+            UpdatePortfoliosList();
         }
 
         public void UpdateActivePortfolio(int? portfolioId)

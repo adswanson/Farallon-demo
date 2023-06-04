@@ -1,5 +1,4 @@
-﻿using Investment.Component.Domain.Symbols;
-using Investment.Component.Domains.Portfolio;
+﻿using Investment.Component.Domains.Portfolio;
 using Investment.Component.Domains.Trading;
 using Investment.Component.Presenters;
 using Investment.Component.Services;
@@ -18,7 +17,6 @@ namespace Investment.Component
                 .RegisterTransient<IPortfoliosPresenter, PortfoliosPresenter>()
                 .RegisterTransient<IPortfolioRepository, XmlFilePortfolioRepository>()
                 .RegisterTransient<ITradeLogRepository, XmlFileTradeLogRepository>()
-                .RegisterTransient<ISymbolRepository, XmlFileSymbolRepository>()
                 .RegisterSingleton<IXmlDataContextAccessor, TXmlDataContextAccessor>()
                 .RegisterTransient<IXmlFileDataProvider, XmlFileDataProvider>();
 

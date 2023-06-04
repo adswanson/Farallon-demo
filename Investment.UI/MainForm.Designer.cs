@@ -28,68 +28,43 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dgPortfolioTradeHistory = new System.Windows.Forms.DataGridView();
-            this.pnlTradeLog = new System.Windows.Forms.Panel();
-            this.tabTradeHistory = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tcSubPages = new System.Windows.Forms.TabControl();
+            this.tpTradeHistory = new System.Windows.Forms.TabPage();
+            this.tpProfitsAndLossesReport = new System.Windows.Forms.TabPage();
             this.pnlPortfolioPicker = new System.Windows.Forms.Panel();
-            ((System.ComponentModel.ISupportInitialize)(this.dgPortfolioTradeHistory)).BeginInit();
-            this.pnlTradeLog.SuspendLayout();
-            this.tabTradeHistory.SuspendLayout();
+            this.tcSubPages.SuspendLayout();
             this.SuspendLayout();
             // 
-            // dgPortfolioTradeHistory
+            // tcSubPages
             // 
-            this.dgPortfolioTradeHistory.AllowUserToAddRows = false;
-            this.dgPortfolioTradeHistory.AllowUserToDeleteRows = false;
-            this.dgPortfolioTradeHistory.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgPortfolioTradeHistory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgPortfolioTradeHistory.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgPortfolioTradeHistory.Location = new System.Drawing.Point(0, 0);
-            this.dgPortfolioTradeHistory.Name = "dgPortfolioTradeHistory";
-            this.dgPortfolioTradeHistory.ReadOnly = true;
-            this.dgPortfolioTradeHistory.Size = new System.Drawing.Size(952, 199);
-            this.dgPortfolioTradeHistory.TabIndex = 0;
+            this.tcSubPages.Controls.Add(this.tpTradeHistory);
+            this.tcSubPages.Controls.Add(this.tpProfitsAndLossesReport);
+            this.tcSubPages.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.tcSubPages.Location = new System.Drawing.Point(0, 111);
+            this.tcSubPages.Name = "tcSubPages";
+            this.tcSubPages.SelectedIndex = 0;
+            this.tcSubPages.Size = new System.Drawing.Size(952, 339);
+            this.tcSubPages.TabIndex = 2;
             // 
-            // pnlTradeLog
+            // tpTradeHistory
             // 
-            this.pnlTradeLog.AutoScroll = true;
-            this.pnlTradeLog.Controls.Add(this.dgPortfolioTradeHistory);
-            this.pnlTradeLog.Location = new System.Drawing.Point(0, 91);
-            this.pnlTradeLog.Name = "pnlTradeLog";
-            this.pnlTradeLog.Size = new System.Drawing.Size(952, 199);
-            this.pnlTradeLog.TabIndex = 1;
+            this.tpTradeHistory.Location = new System.Drawing.Point(4, 22);
+            this.tpTradeHistory.Name = "tpTradeHistory";
+            this.tpTradeHistory.Padding = new System.Windows.Forms.Padding(3);
+            this.tpTradeHistory.Size = new System.Drawing.Size(944, 313);
+            this.tpTradeHistory.TabIndex = 0;
+            this.tpTradeHistory.Text = "Trade History";
+            this.tpTradeHistory.UseVisualStyleBackColor = true;
             // 
-            // tabTradeHistory
+            // tpProfitsAndLossesReport
             // 
-            this.tabTradeHistory.Controls.Add(this.tabPage1);
-            this.tabTradeHistory.Controls.Add(this.tabPage2);
-            this.tabTradeHistory.Location = new System.Drawing.Point(37, 314);
-            this.tabTradeHistory.Name = "tabTradeHistory";
-            this.tabTradeHistory.SelectedIndex = 0;
-            this.tabTradeHistory.Size = new System.Drawing.Size(200, 100);
-            this.tabTradeHistory.TabIndex = 2;
-            // 
-            // tabPage1
-            // 
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(192, 74);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "tabPage1";
-            this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(192, 74);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.tpProfitsAndLossesReport.Location = new System.Drawing.Point(4, 22);
+            this.tpProfitsAndLossesReport.Name = "tpProfitsAndLossesReport";
+            this.tpProfitsAndLossesReport.Padding = new System.Windows.Forms.Padding(3);
+            this.tpProfitsAndLossesReport.Size = new System.Drawing.Size(944, 313);
+            this.tpProfitsAndLossesReport.TabIndex = 1;
+            this.tpProfitsAndLossesReport.Text = "P & L Report";
+            this.tpProfitsAndLossesReport.UseVisualStyleBackColor = true;
             // 
             // pnlPortfolioPicker
             // 
@@ -105,24 +80,18 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(952, 450);
             this.Controls.Add(this.pnlPortfolioPicker);
-            this.Controls.Add(this.tabTradeHistory);
-            this.Controls.Add(this.pnlTradeLog);
+            this.Controls.Add(this.tcSubPages);
             this.Name = "MainForm";
             this.Text = "Form1";
-            ((System.ComponentModel.ISupportInitialize)(this.dgPortfolioTradeHistory)).EndInit();
-            this.pnlTradeLog.ResumeLayout(false);
-            this.tabTradeHistory.ResumeLayout(false);
+            this.tcSubPages.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.DataGridView dgPortfolioTradeHistory;
-        private System.Windows.Forms.Panel pnlTradeLog;
-        private System.Windows.Forms.TabControl tabTradeHistory;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabControl tcSubPages;
+        private System.Windows.Forms.TabPage tpTradeHistory;
+        private System.Windows.Forms.TabPage tpProfitsAndLossesReport;
         private System.Windows.Forms.Panel pnlPortfolioPicker;
     }
 }

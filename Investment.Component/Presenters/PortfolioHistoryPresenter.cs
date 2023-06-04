@@ -1,10 +1,9 @@
-﻿using Investment.Component.Domain.Symbols;
-using Investment.Component.Domains.Portfolio;
-using Investment.Component.Domains.Trading;
+﻿using Investment.Component.Domains.Trading;
 using Investment.Component.Models;
 using Investment.Component.Views;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Utilities;
 
 namespace Investment.Component.Presenters
@@ -12,14 +11,12 @@ namespace Investment.Component.Presenters
     public class PortfolioHistoryPresenter : IPortfolioHistoryPresenter
     {
         private readonly ITradeLogRepository _tradeLogRepository;
-        private readonly ISymbolRepository _symbolRepository;
 
         private IPortfolioHistoryView _view;
 
-        private PortfolioHistoryPresenter(ITradeLogRepository tradeLogRepository, ISymbolRepository symbolRepository)
+        private PortfolioHistoryPresenter(ITradeLogRepository tradeLogRepository)
         {
             _tradeLogRepository = tradeLogRepository;
-            _symbolRepository = symbolRepository;
         }
 
         public void Initialize(IPortfolioHistoryView view)
@@ -50,14 +47,12 @@ namespace Investment.Component.Presenters
 
         private PortfolioTransactionModel SelectTransactionModel(TradeLogRecord trade)
         {
-            var symbol = _symbolRepository.GetSymbol(trade.SymbolId);
-
             return new PortfolioTransactionModel
             {
                 TransactionType = ToTradeTypeModel(trade.TradeType),
                 PurchaseAmount = trade.UnitAmount,
                 PurchasePrice = trade.Price,
-                SymbolName = symbol?.SymbolName ?? null,
+                SymbolName = trade.SymbolName,
                 TradeDate = trade.TransactionDate,
                 TotalAmount = trade.UnitAmount * trade.Price,
             };

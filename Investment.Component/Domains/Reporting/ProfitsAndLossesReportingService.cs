@@ -21,7 +21,7 @@ namespace Investment.Component.Domains.Reporting
 
             var symbolGroups = _tradeLogRepository
                 .GetPortfolioTradeLog(portfolioId)
-                .GroupBy(t => t.SymbolId);
+                .GroupBy(t => t.SymbolName);
 
             var lineItems = new ConcurrentDictionary<int, ProfitsAndLossesReportLineItem>();
 

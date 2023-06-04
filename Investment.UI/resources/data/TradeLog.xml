@@ -3,7 +3,7 @@
 		<TradeLogRecord>
 			<TradeLogId>0</TradeLogId>			
 			<PortfolioId>1</PortfolioId>
-			<SymbolId>0</SymbolId>
+			<SymbolName>AAPL</SymbolName>
 			<Price>30.00</Price>
 			<TradeType>Buy</TradeType>
 			<TransactionDate>2023-06-03T10:00:00</TransactionDate>

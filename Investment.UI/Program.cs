@@ -4,6 +4,7 @@ using Investment.Component.Views;
 using Investment.UI.Controls;
 using Investment.UI.Services;
 using System;
+using System.ComponentModel;
 using System.Windows.Forms;
 using Utilities.DependencyInjection;
 
@@ -35,10 +36,12 @@ namespace Investment.UI
 
         private static ContainerBuilder AddApplicationDependencies(this ContainerBuilder builder)
         {
-            builder.RegisterSingleton<IPortfolioHistoryView, MainForm>();
+            builder.RegisterSingleton<IApplicationContextAccessor, ApplicationContextAccessor>();
             builder.RegisterSingleton<IPortfoliosView, PortfolioPicker>();
             builder.RegisterSingleton<PortfolioPicker, PortfolioPicker>();
             builder.RegisterSingleton<MainForm, MainForm>();
+            builder.RegisterSingleton<TradeHistory, TradeHistory>();
+            builder.RegisterTransient<BackgroundWorker, BackgroundWorker>();
 
             return builder;
         }
