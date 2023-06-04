@@ -1,7 +1,4 @@
 ﻿using Investment.Component.Domains.Trading;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Investment.Component.Models
 {

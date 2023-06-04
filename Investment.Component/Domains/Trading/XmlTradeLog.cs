@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Investment.Component.Domains.Trading
 {
-    public class XmlTradeLog
+    public sealed class XmlTradeLog
     {
         public List<TradeLogRecord> TradeLogEntries = new List<TradeLogRecord>();
     }

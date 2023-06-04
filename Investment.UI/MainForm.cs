@@ -3,10 +3,12 @@ using Investment.Component.Models;
 using System.Collections.Generic;
 using System.Data;
 using System.Windows.Forms;
+using Investment.Component.Views;
+using Investment.UI.Controls;
 
 namespace Investment.UI
 {
-    public partial class MainForm : Form, IPortfolioHistoryView
+    public partial class MainForm : Form, IPortfolioHistoryView, IPortfoliosView
     {
         private readonly IPortfolioHistoryPresenter _presenter;
 
@@ -25,7 +27,7 @@ namespace Investment.UI
             }
         }
 
-        public MainForm(IPortfolioHistoryPresenter portfolioHistoryPresenter)
+        public MainForm(PortfolioPicker portfolioPicker, IPortfolioHistoryPresenter portfolioHistoryPresenter)
         {
             InitializeComponent();
 
@@ -34,11 +36,24 @@ namespace Investment.UI
 
             //todo - portofolio selector component
             portfolioHistoryPresenter.ChangeActivePortfolio(1);
+
+            pnlPortfolioPicker.Controls.Add(portfolioPicker);
+            
         }
 
         public void SetTransactionHistory(IEnumerable<PortfolioTransactionModel> transactions)
         {
             dgPortfolioTradeHistory.DataSource = transactions.ToDataTable();
+        }
+
+        public void SetPortfoliosList(IEnumerable<PortfoliosListItemModel> listItems)
+        {
+            
+        }
+
+        public void SetActivePortfolio(int? portfolioId)
+        {
+            
         }
     }
 

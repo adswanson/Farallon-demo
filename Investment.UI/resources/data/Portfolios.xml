@@ -1,6 +1,8 @@
-
-<Portfolios>
-	<PortfolioRecord>
-			
-	</PortfolioRecord>
-</Portfolios>
+<XmlPortfolio>
+	<Portfolios>
+		<PortfolioRecord>
+			<Id>0</Id>
+			<Name>Tech Stocks</Name>
+		</PortfolioRecord>
+	</Portfolios>	
+</XmlPortfolio>

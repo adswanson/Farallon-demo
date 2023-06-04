@@ -1,5 +1,6 @@
 ﻿using Investment.Component.Domains.Trading;
 using Investment.Component.Models;
+using Investment.Component.Views;
 
 namespace Investment.Component.Presenters
 {

@@ -10,6 +10,6 @@ namespace Investment.Component.Domains.Trading
         public TradeType TradeType { get; set; }
         public decimal UnitAmount { get; set; }
         public decimal Price { get; set; }
-        public DateTimeOffset TransactionDateUtc { get; set; }
+        public DateTime TransactionDate { get; set; }
     }
 }

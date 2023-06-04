@@ -2,17 +2,13 @@
 using Investment.Component.Domains.Portfolio;
 using Investment.Component.Domains.Trading;
 using Investment.Component.Models;
+using Investment.Component.Views;
 using System.Collections.Generic;
 using System.Linq;
 using Utilities;
 
 namespace Investment.Component.Presenters
 {
-    public interface IPortfolioHistoryView
-    {
-        void SetTransactionHistory(IEnumerable<PortfolioTransactionModel> transactions);
-    }
-
     public class PortfolioHistoryPresenter : IPortfolioHistoryPresenter
     {
         private readonly ITradeLogRepository _tradeLogRepository;
@@ -20,7 +16,7 @@ namespace Investment.Component.Presenters
 
         private IPortfolioHistoryView _view;
 
-        public PortfolioHistoryPresenter(ITradeLogRepository tradeLogRepository, ISymbolRepository symbolRepository)
+        private PortfolioHistoryPresenter(ITradeLogRepository tradeLogRepository, ISymbolRepository symbolRepository)
         {
             _tradeLogRepository = tradeLogRepository;
             _symbolRepository = symbolRepository;
@@ -46,7 +42,7 @@ namespace Investment.Component.Presenters
         {
             var trades = _tradeLogRepository
                 .GetPortfolioTradeLog(portfolioId)
-                .OrderByDescending(t => t.TransactionDateUtc)
+                .OrderByDescending(t => t.TransactionDate)
                 .Select(SelectTransactionModel);
 
             _view?.SetTransactionHistory(trades);
@@ -62,7 +58,7 @@ namespace Investment.Component.Presenters
                 PurchaseAmount = trade.UnitAmount,
                 PurchasePrice = trade.Price,
                 SymbolName = symbol?.SymbolName ?? null,
-                TradeDate = trade.TransactionDateUtc,
+                TradeDate = trade.TransactionDate,
                 TotalAmount = trade.UnitAmount * trade.Price,
             };
         }

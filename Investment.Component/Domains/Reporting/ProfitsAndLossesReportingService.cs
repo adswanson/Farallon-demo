@@ -32,7 +32,7 @@ namespace Investment.Component.Domains.Reporting
                 decimal unitsOnHand = 0;
                 decimal cost = 0;
 
-                foreach (var trade in group.OrderBy(t => t.TransactionDateUtc))
+                foreach (var trade in group.OrderBy(t => t.TransactionDate))
                 {
                     if (trade.TradeType == TradeType.Buy)
                     {
