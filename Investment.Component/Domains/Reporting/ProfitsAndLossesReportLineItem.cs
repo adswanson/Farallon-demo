@@ -2,7 +2,7 @@
 
 namespace Investment.Component.Domains.Reporting
 {
-    public class ProfitsAndLossesReportLineItem
+    public sealed class ProfitsAndLossesReportLineItem
     {
         public string Symbol { get; set; }
         public decimal Cost { get; set; }

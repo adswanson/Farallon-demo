@@ -1,12 +1,9 @@
 ﻿using Investment.Component.Domains.Trading;
-using Investment.Component.Models;
-using Investment.Component.Views;
-using System.Collections.Generic;
+using Investment.Presentation.Models;
+using Investment.Presentation.Views;
 using System.Linq;
-using System.Threading.Tasks;
-using Utilities;
 
-namespace Investment.Component.Presenters
+namespace Investment.Presentation.Presenters
 {
     public class PortfolioHistoryPresenter : IPortfolioHistoryPresenter
     {
@@ -58,7 +55,7 @@ namespace Investment.Component.Presenters
             };
         }
 
-        public TradeTypeModel ToTradeTypeModel(TradeType tradeType)
+        private TradeTypeModel ToTradeTypeModel(TradeType tradeType)
         {
             switch (tradeType)
             {

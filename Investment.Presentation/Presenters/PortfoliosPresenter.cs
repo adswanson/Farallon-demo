@@ -1,18 +1,13 @@
 ﻿using Investment.Component.Domains.Portfolio;
-using Investment.Component.Models;
+using Investment.Presentation.Models;
+using Investment.Presentation.Views;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Investment.Component.Presenters
+namespace Investment.Presentation.Presenters
 {
-    public interface IPortfoliosView
-    {
-        void SetPortfoliosList(IEnumerable<PortfoliosListItemModel> listItems);
-        Task SetActivePortfolio(int? portfolioId);
-    }
 
     internal class PortfoliosPresenter : IPortfoliosPresenter
     {

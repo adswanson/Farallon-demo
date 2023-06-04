@@ -1,6 +1,7 @@
-﻿using System.Threading.Tasks;
+﻿using Investment.Presentation.Views;
+using System.Threading.Tasks;
 
-namespace Investment.Component.Presenters
+namespace Investment.Presentation.Presenters
 {
     public interface IProfitsAndLossesPresenter
     {

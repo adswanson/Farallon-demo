@@ -1,12 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using Utilities.Http;
 using Utilities.Json;
 
 namespace Investment.Component.Domains.Trading.AlphaVantage
 {
-    internal class AlphaVantageQuoteService : IQuoteService
+    internal sealed class AlphaVantageQuoteService : IQuoteService
     {
         private const string GlobalQuote = "GLOBAL_QUOTE";
         private const string TimeSeriesDailyAdjusted = "TIME_SERIES_DAILY_ADJUSTED";
@@ -15,7 +14,7 @@ namespace Investment.Component.Domains.Trading.AlphaVantage
         private readonly RemoteQuoteOptions _remoteQuoteOptions;
         private readonly IJsonSerializationService _jsonSerializationService;
 
-        public AlphaVantageQuoteService(IHttpClientFactory httpClientFactory, RemoteQuoteOptions options,
+        private AlphaVantageQuoteService(IHttpClientFactory httpClientFactory, RemoteQuoteOptions options,
             IJsonSerializationService jsonSerializationService)
         {
             _httpClient = httpClientFactory.Get(nameof(IQuoteService));

@@ -14,7 +14,7 @@ namespace Investment.Component.Domains.Portfolio
 
         private XmlPortfolio Portfolio => _xmlFileDataProvider.TryDeserialize<XmlPortfolio>(_xmlDataContextAccessor.PortfolioXml);
 
-        internal XmlFilePortfolioRepository(IXmlFileDataProvider xmlFileDataProvider, IXmlDataContextAccessor xmlDataContextAccessor)
+        private XmlFilePortfolioRepository(IXmlFileDataProvider xmlFileDataProvider, IXmlDataContextAccessor xmlDataContextAccessor)
         {
             _xmlFileDataProvider = xmlFileDataProvider;
             _xmlDataContextAccessor = xmlDataContextAccessor;

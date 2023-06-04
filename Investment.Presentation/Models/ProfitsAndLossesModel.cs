@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace Investment.Component.Models
+namespace Investment.Presentation.Models
 {
-    public class ProfitsAndLossesModel
+    public sealed class ProfitsAndLossesModel
     {
         public string Symbol { get; set; }
         public decimal Cost { get; set; }

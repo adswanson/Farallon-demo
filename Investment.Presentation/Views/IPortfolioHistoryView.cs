@@ -1,7 +1,7 @@
-﻿using Investment.Component.Models;
+﻿using Investment.Presentation.Models;
 using System.Collections.Generic;
 
-namespace Investment.Component.Views
+namespace Investment.Presentation.Views
 {
     public interface IPortfolioHistoryView
     {

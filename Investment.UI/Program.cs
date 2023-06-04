@@ -1,11 +1,9 @@
 ﻿using Investment.Component;
 using Investment.Component.Domains.Trading;
-using Investment.Component.Presenters;
-using Investment.Component.Views;
+using Investment.Presentation.Views;
 using Investment.UI.Controls;
 using Investment.UI.Services;
 using System;
-using System.ComponentModel;
 using System.Windows.Forms;
 using Utilities.DependencyInjection;
 using Utilities.Http;
@@ -34,7 +32,6 @@ namespace Investment.UI
             using(var container = containerBuilder.Build())
             {
                 var mainForm = container.Resolve<MainForm>();
-                var presenter = container.Resolve<IPortfolioHistoryPresenter>();
                 
                 Application.Run(mainForm);
             }

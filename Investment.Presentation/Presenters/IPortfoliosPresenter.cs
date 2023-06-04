@@ -1,8 +1,7 @@
-﻿using Investment.Component.Models;
-using System.Collections.Generic;
+﻿using Investment.Presentation.Views;
 using System.Threading.Tasks;
 
-namespace Investment.Component.Presenters
+namespace Investment.Presentation.Presenters
 {
     public interface IPortfoliosPresenter
     {

@@ -1,15 +1,11 @@
 ﻿using Investment.Component.Domains.Reporting;
-using Investment.Component.Models;
-using System.Collections.Generic;
+using Investment.Presentation.Models;
+using Investment.Presentation.Views;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Investment.Component.Presenters
+namespace Investment.Presentation.Presenters
 {
-    public interface IProfitsAndLossesReportView
-    {
-        void SetReport(IEnumerable<ProfitsAndLossesModel> model);
-    }
 
     public class ProfitsAndLossesPresenter : IProfitsAndLossesPresenter
     {

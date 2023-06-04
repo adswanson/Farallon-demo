@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace Investment.Component.Models
+namespace Investment.Presentation.Models
 {
-    public class PortfolioTransactionModel
+    public sealed class PortfolioTransactionModel
     {
         public string SymbolName { get; set; }
         public TradeTypeModel TransactionType { get; set; }

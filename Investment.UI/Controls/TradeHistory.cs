@@ -1,11 +1,10 @@
-﻿using Investment.Component.Models;
-using Investment.Component.Presenters;
-using Investment.Component.Views;
+﻿using Investment.Presentation.Models;
+using Investment.Presentation.Presenters;
+using Investment.Presentation.Views;
 using Investment.UI.Eventing;
 using Investment.UI.Services;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Threading.Tasks;
 using System.Windows.Forms;

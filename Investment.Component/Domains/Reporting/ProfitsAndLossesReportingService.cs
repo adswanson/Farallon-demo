@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace Investment.Component.Domains.Reporting
 {
-    internal class ProfitsAndLossesReportingService : IProfitsAndLossesReportingService
+    internal sealed class ProfitsAndLossesReportingService : IProfitsAndLossesReportingService
     {
         private readonly ITradeLogRepository _tradeLogRepository;
         private readonly IQuoteService _quoteService;
 
-        public ProfitsAndLossesReportingService(ITradeLogRepository tradeLogRepository, IQuoteService quoteService)
+        private ProfitsAndLossesReportingService(ITradeLogRepository tradeLogRepository, IQuoteService quoteService)
         {
             _tradeLogRepository = tradeLogRepository;
             _quoteService = quoteService;

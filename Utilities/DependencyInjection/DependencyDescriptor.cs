@@ -10,12 +10,12 @@ namespace Utilities.DependencyInjection
         /// <summary>
         /// The concrete implementation
         /// </summary>
-        public Type ConcreteType { get; private set; }
+        internal Type ConcreteType { get; private set; }
 
         /// <summary>
         /// The object lifespan
         /// </summary>
-        public DependencyLifespan Lifespan { get; private set; }
+        internal DependencyLifespan Lifespan { get; private set; }
 
         public DependencyDescriptor(Type type, DependencyLifespan lifespan)
         {

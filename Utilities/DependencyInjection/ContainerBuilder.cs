@@ -59,6 +59,12 @@ namespace Utilities.DependencyInjection
             return this;
         }
 
+        /// <summary>
+        /// Registers a dependency as a singleton with an existing object instance
+        /// </summary>
+        /// <typeparam name="TInterface"></typeparam>
+        /// <param name="instance"></param>
+        /// <returns></returns>
         public ContainerBuilder RegisterSingleton<TInterface>(TInterface instance)
             where TInterface : class
         {

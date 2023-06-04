@@ -116,6 +116,10 @@
       <Project>{724d71cf-2d0c-4060-964a-8a1c06c3996d}</Project>
       <Name>Investment.Component</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Investment.Presentation\Investment.Presentation.csproj">
+      <Project>{B80D8BA0-EF4A-4C59-A057-FB9D9230AF0E}</Project>
+      <Name>Investment.Presentation</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Utilities\Utilities.csproj">
       <Project>{3A8B2D86-E969-4CCE-B03D-0482F6AAF8DF}</Project>
       <Name>Utilities</Name>

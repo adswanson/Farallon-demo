@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Investment.Component.Models
+﻿
+namespace Investment.Presentation.Models
 {
-    public class PortfoliosListItemModel
+    public sealed class PortfoliosListItemModel
     {
         public int? PortfolioId { get; set; }
         public string Name { get; set; }

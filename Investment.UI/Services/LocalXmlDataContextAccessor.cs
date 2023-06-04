@@ -2,7 +2,7 @@
 
 namespace Investment.UI.Services
 {
-    internal class LocalXmlDataContextAccessor : IXmlDataContextAccessor
+    internal sealed class LocalXmlDataContextAccessor : IXmlDataContextAccessor
     {
         public string PortfolioXml { get; set; } = "resources/data/Portfolios.xml";
         public string SymbolXml { get; set; } = "resources/data/Symbols.xml";

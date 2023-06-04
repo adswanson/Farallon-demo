@@ -10,9 +10,4 @@ namespace Investment.Component.Domains.Trading
         Task<QuoteRecord> GetHistoricalQuote(string symbol);
         Task<QuoteRecord> GetQuote(string symbol);
     }
-
-    public class RemoteQuoteOptions
-    {
-        public string ApiKey { get; set; }
-    }
 }

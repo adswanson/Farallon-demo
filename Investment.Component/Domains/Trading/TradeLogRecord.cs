@@ -2,7 +2,7 @@
 
 namespace Investment.Component.Domains.Trading
 {
-    public class TradeLogRecord
+    public sealed class TradeLogRecord
     {
         public int PortfolioId { get; set; }
         public int TradeLogId { get; set; }

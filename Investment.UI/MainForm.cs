@@ -1,9 +1,4 @@
-﻿using Investment.Component.Presenters;
-using Investment.Component.Models;
-using System.Collections.Generic;
-using System.Data;
-using System.Windows.Forms;
-using Investment.Component.Views;
+﻿using System.Windows.Forms;
 using Investment.UI.Controls;
 
 namespace Investment.UI
