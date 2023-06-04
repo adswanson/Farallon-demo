@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Investment.UI.Controls
@@ -36,7 +37,21 @@ namespace Investment.UI.Controls
         {
             _presenter.Initialize(this);
 
-            _applicationContextAccessor.OnActivePortfolioChanged += _changeActivePortfolioWorker.RunWorkerAsync;
+            //_applicationContextAccessor.OnActivePortfolioChanged += _changeActivePortfolioWorker.RunWorkerAsync;
+            _applicationContextAccessor.RegisterChangePortfolioEventSet(new EventSet<PortfolioChangeEventArgs>
+            {
+                OnRunAsync = RunAsync,
+                //OnRunSync = (args) => _presenter.ChangeActivePortfolio(args.New),
+                OnDone = (args) => dgPortfolioTradeHistory.DataSource = _tradeHistory
+            });
+        }
+
+        private async Task RunAsync(PortfolioChangeEventArgs args)
+        {
+            await Task.Run(() =>
+            {
+                _presenter.ChangeActivePortfolio(args.New);
+            });
         }
 
         private void changeActivePortfolioWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)

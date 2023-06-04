@@ -15,7 +15,7 @@ namespace Investment.Component.Services
             {
                 XmlSerializer serializer = new XmlSerializer(typeof(TData));
 
-                using (var portfolioFile = new FileStream(filePath, FileMode.Open))
+                using (var portfolioFile = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
                 {
                     TData deserializedData = serializer.Deserialize(portfolioFile) as TData;
 

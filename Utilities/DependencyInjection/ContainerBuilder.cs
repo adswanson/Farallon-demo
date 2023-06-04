@@ -13,7 +13,11 @@ namespace Utilities.DependencyInjection
         private ConcurrentDictionary<Type, DependencyDescriptor> _container =
             new ConcurrentDictionary<Type, DependencyDescriptor>();
 
+        private ConcurrentDictionary<Type, object> _prebuiltInstances = 
+            new ConcurrentDictionary<Type, object>();
+
         internal IReadOnlyDictionary<Type, DependencyDescriptor> Container => _container;
+        internal IReadOnlyDictionary<Type, object> PrebuiltInstances => _prebuiltInstances;
 
         /// <summary>
         /// Constructs a <seealso cref="DependencyContainer"/> composed of all currently registered dependencies. 
@@ -51,6 +55,17 @@ namespace Utilities.DependencyInjection
             Register(
                 typeof(TInterface),
                 new DependencyDescriptor(typeof(TConcrete), DependencyLifespan.Singleton));
+
+            return this;
+        }
+
+        public ContainerBuilder RegisterSingleton<TInterface>(TInterface instance)
+            where TInterface : class
+        {
+            _prebuiltInstances[typeof(TInterface)] = instance;
+
+            Register(typeof(TInterface),
+                new DependencyDescriptor(typeof(TInterface), DependencyLifespan.Singleton));
 
             return this;
         }

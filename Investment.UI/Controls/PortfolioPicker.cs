@@ -31,9 +31,9 @@ namespace Investment.UI.Controls
             _presenter.UpdatePortfoliosList();
         }
 
-        public void SetActivePortfolio(int? portfolioId)
+        public async Task SetActivePortfolio(int? portfolioId)
         {
-            _applicationContextAccessor.ActivePortfolioId = portfolioId;
+            await _applicationContextAccessor.ChangeActivePortfolio(portfolioId);
         }
 
         public void SetPortfoliosList(IEnumerable<PortfoliosListItemModel> listItems)
@@ -46,12 +46,12 @@ namespace Investment.UI.Controls
             ddlPortfolios.DataSource = portfoliosList;
         }
 
-        private void ddlPortfolios_SelectedIndexChanged(object sender, EventArgs e)
+        private async void ddlPortfolios_SelectedIndexChanged(object sender, EventArgs e)
         {
             if(sender is ComboBox comboBox)
             {
                 var value = comboBox.SelectedValue as PortfoliosListItemModel;
-                _presenter.UpdateActivePortfolio(value?.PortfolioId);
+                await _presenter.UpdateActivePortfolio(value?.PortfolioId);
             }
         }
     }

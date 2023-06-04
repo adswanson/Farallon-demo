@@ -4,13 +4,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Investment.Component.Presenters
 {
     public interface IPortfoliosView
     {
         void SetPortfoliosList(IEnumerable<PortfoliosListItemModel> listItems);
-        void SetActivePortfolio(int? portfolioId);
+        Task SetActivePortfolio(int? portfolioId);
     }
 
     internal class PortfoliosPresenter : IPortfoliosPresenter
@@ -31,9 +32,9 @@ namespace Investment.Component.Presenters
             UpdatePortfoliosList();
         }
 
-        public void UpdateActivePortfolio(int? portfolioId)
+        public async Task UpdateActivePortfolio(int? portfolioId)
         {
-            _view.SetActivePortfolio(portfolioId);
+            await _view.SetActivePortfolio(portfolioId);
         }
 
         public void UpdatePortfoliosList()

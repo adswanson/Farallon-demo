@@ -21,6 +21,11 @@ namespace Utilities.DependencyInjection
         internal DependencyContainer(ContainerBuilder containerBuilder)
         {
             _container = containerBuilder.Container;
+
+            foreach(var prebuiltInstance in containerBuilder.PrebuiltInstances)
+            {
+                _singletonCache[prebuiltInstance.Key] = prebuiltInstance.Value;
+            }
         }
 
         /// <summary>
@@ -41,11 +46,12 @@ namespace Utilities.DependencyInjection
             // the singleton cache for an existing instance.
             if (descriptor.Lifespan == DependencyLifespan.Singleton)
             {
-                object existingInstance = _singletonCache.GetOrAdd(
-                    descriptor.ConcreteType,
-                    Activate(descriptor.ConcreteType));
+                if(!_singletonCache.TryGetValue(type, out _))
+                {
+                    _singletonCache[type] = Activate(descriptor.ConcreteType);                  
+                }
 
-                return existingInstance;
+                return _singletonCache[type];
             }
 
             return Activate(descriptor.ConcreteType);

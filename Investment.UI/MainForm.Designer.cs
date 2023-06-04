@@ -83,6 +83,7 @@
             this.Controls.Add(this.tcSubPages);
             this.Name = "MainForm";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.tcSubPages.ResumeLayout(false);
             this.ResumeLayout(false);
 

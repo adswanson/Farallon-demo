@@ -1,5 +1,6 @@
 ﻿using Investment.Component.Models;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Investment.Component.Presenters
 {
@@ -7,6 +8,6 @@ namespace Investment.Component.Presenters
     {
         void Initialize(IPortfoliosView portfoliosView);
         void UpdatePortfoliosList();
-        void UpdateActivePortfolio(int? portfolioId);
+        Task UpdateActivePortfolio(int? portfolioId);
     }
 }

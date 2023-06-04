@@ -52,6 +52,12 @@
     <Compile Include="Controls\PortfolioPicker.Designer.cs">
       <DependentUpon>PortfolioPicker.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\ProfitsAndLossesReport.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ProfitsAndLossesReport.Designer.cs">
+      <DependentUpon>ProfitsAndLossesReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\TradeHistory.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -71,6 +77,9 @@
     <Compile Include="Services\LocalXmlDataContextAccessor.cs" />
     <EmbeddedResource Include="Controls\PortfolioPicker.resx">
       <DependentUpon>PortfolioPicker.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\ProfitsAndLossesReport.resx">
+      <DependentUpon>ProfitsAndLossesReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\TradeHistory.resx">
       <DependentUpon>TradeHistory.cs</DependentUpon>

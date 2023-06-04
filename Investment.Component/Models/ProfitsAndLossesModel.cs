@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Text;
 
-namespace Investment.Component.Domains.Reporting
+namespace Investment.Component.Models
 {
-    public class ProfitsAndLossesReportLineItem
+    public class ProfitsAndLossesModel
     {
         public string Symbol { get; set; }
         public decimal Cost { get; set; }
