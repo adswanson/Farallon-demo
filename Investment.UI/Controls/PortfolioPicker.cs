@@ -16,24 +16,23 @@ namespace Investment.UI.Controls
     public partial class PortfolioPicker : UserControl, IPortfoliosView
     {
         private readonly IPortfoliosPresenter _presenter;
-        private readonly IApplicationContextAccessor _applicationContextAccessor;
+        private readonly IApplicationStateAccessor _applicationStateAccessor;
 
-        internal PortfolioPicker(IPortfoliosPresenter presenter, IApplicationContextAccessor applicationContextAccessor)
+        internal PortfolioPicker(IPortfoliosPresenter presenter, IApplicationStateAccessor applicationContextAccessor)
         {
             _presenter = presenter;
-            _applicationContextAccessor = applicationContextAccessor;
+            _applicationStateAccessor = applicationContextAccessor;
 
             InitializeComponent();           
         }
         private void PortfolioPicker_Load(object sender, EventArgs e)
         {
             _presenter.Initialize(this);
-            _presenter.UpdatePortfoliosList();
         }
 
         public async Task SetActivePortfolio(int? portfolioId)
         {
-            await _applicationContextAccessor.ChangeActivePortfolio(portfolioId);
+            await _applicationStateAccessor.ChangeActivePortfolio(portfolioId);
         }
 
         public void SetPortfoliosList(IEnumerable<PortfoliosListItemModel> listItems)

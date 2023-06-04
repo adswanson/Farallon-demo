@@ -17,21 +17,15 @@ namespace Investment.UI.Controls
     public partial class ProfitsAndLossesReport : UserControl, IProfitsAndLossesReportView
     {
         private readonly IProfitsAndLossesPresenter _presenter;
-        private readonly IApplicationContextAccessor _applicationContextAccessor;
-        private readonly BackgroundWorker _changeActivePortfolioWorker;
+        private readonly IApplicationStateAccessor _applicationStateAccessor;
 
         private DataTable _reportTable;
 
         private ProfitsAndLossesReport(IProfitsAndLossesPresenter profitsAndLossesPresenter,
-            IApplicationContextAccessor applicationContextAccessor,
-            BackgroundWorker changeActivePortfolioWorker)
+            IApplicationStateAccessor applicationStateAccessor)
         {
             _presenter = profitsAndLossesPresenter;
-            _applicationContextAccessor = applicationContextAccessor;
-            _changeActivePortfolioWorker = changeActivePortfolioWorker;
-
-            _changeActivePortfolioWorker.DoWork += changeActivePortfolioWorker_DoWork;
-            _changeActivePortfolioWorker.RunWorkerCompleted += changeActivePortfolioWorker_RunWorkerCompleted;
+            _applicationStateAccessor = applicationStateAccessor;
 
             InitializeComponent();
         }
@@ -39,29 +33,12 @@ namespace Investment.UI.Controls
         private void ProfitsAndLossesReport_Load(object sender, EventArgs e)
         {
             _presenter.Initialize(this);
-            //_applicationContextAccessor.OnActivePortfolioChanged += _changeActivePortfolioWorker.RunWorkerAsync;
 
-            _applicationContextAccessor.OnActivePortfolioChanged += (args) =>
+            _applicationStateAccessor.RegisterChangePortfolioEventSet(new EventSet<PortfolioChangeEventArgs>
             {
-                dgProfitsAndLosses.DataSource = _reportTable;
-            };
-
-            _applicationContextAccessor.OnActivePortfolioChangedAsync += async (args) =>
-            {
-                await _presenter.ChangeActivePortfolio(args.New);
-            };
-        }
-
-        private void changeActivePortfolioWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-            dgProfitsAndLosses.DataSource = _reportTable;
-        }
-        private void changeActivePortfolioWorker_DoWork(object sender, DoWorkEventArgs e)
-        {
-            if (e.Argument is PortfolioChangeEventArgs changeEventArgs)
-            {
-                _presenter.ChangeActivePortfolio(changeEventArgs.New);
-            }
+                OnRunAsync = async (args) => await _presenter.ChangeActivePortfolio(args.New),
+                OnDone = (args) => dgProfitsAndLosses.DataSource = _reportTable
+            });
         }
 
         public void SetReport(IEnumerable<ProfitsAndLossesModel> model)

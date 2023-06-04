@@ -66,12 +66,11 @@ namespace Investment.UI
 
         private static ContainerBuilder AddApplicationDependencies(this ContainerBuilder builder)
         {
-            builder.RegisterSingleton<IApplicationContextAccessor, ApplicationContextAccessor>();
+            builder.RegisterSingleton<IApplicationStateAccessor, ApplicationStateAccessor>();
             builder.RegisterSingleton<IPortfoliosView, PortfolioPicker>();
             builder.RegisterSingleton<PortfolioPicker, PortfolioPicker>();
             builder.RegisterSingleton<MainForm, MainForm>();
             builder.RegisterSingleton<TradeHistory, TradeHistory>();
-            builder.RegisterTransient<BackgroundWorker, BackgroundWorker>();
             builder.RegisterSingleton<ProfitsAndLossesReport, ProfitsAndLossesReport>();
 
             return builder;

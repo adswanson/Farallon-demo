@@ -15,20 +15,14 @@ namespace Investment.UI.Controls
     public partial class TradeHistory : UserControl, IPortfolioHistoryView
     {
         private readonly IPortfolioHistoryPresenter _presenter;
-        private readonly IApplicationContextAccessor _applicationContextAccessor;
-        private readonly BackgroundWorker _changeActivePortfolioWorker;
+        private readonly IApplicationStateAccessor _applicationStateAccessor;
 
         private DataTable _tradeHistory;
 
-        private TradeHistory(IPortfolioHistoryPresenter presenter, IApplicationContextAccessor applicationContextAccessor,
-            BackgroundWorker changeActivePortfolioWorker)
+        private TradeHistory(IPortfolioHistoryPresenter presenter, IApplicationStateAccessor applicationStateAccessor)
         {
             _presenter = presenter;
-            _applicationContextAccessor = applicationContextAccessor;
-            _changeActivePortfolioWorker = changeActivePortfolioWorker;
-
-            _changeActivePortfolioWorker.DoWork += changeActivePortfolioWorker_DoWork;
-            _changeActivePortfolioWorker.RunWorkerCompleted += changeActivePortfolioWorker_RunWorkerCompleted;
+            _applicationStateAccessor = applicationStateAccessor;
 
             InitializeComponent();
         }
@@ -37,33 +31,19 @@ namespace Investment.UI.Controls
         {
             _presenter.Initialize(this);
 
-            //_applicationContextAccessor.OnActivePortfolioChanged += _changeActivePortfolioWorker.RunWorkerAsync;
-            _applicationContextAccessor.RegisterChangePortfolioEventSet(new EventSet<PortfolioChangeEventArgs>
+            _applicationStateAccessor.RegisterChangePortfolioEventSet(new EventSet<PortfolioChangeEventArgs>
             {
-                OnRunAsync = RunAsync,
-                //OnRunSync = (args) => _presenter.ChangeActivePortfolio(args.New),
+                OnRunAsync = OnPortfolioChangeAsync,
                 OnDone = (args) => dgPortfolioTradeHistory.DataSource = _tradeHistory
             });
         }
 
-        private async Task RunAsync(PortfolioChangeEventArgs args)
+        private async Task OnPortfolioChangeAsync(PortfolioChangeEventArgs args)
         {
             await Task.Run(() =>
             {
                 _presenter.ChangeActivePortfolio(args.New);
             });
-        }
-
-        private void changeActivePortfolioWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-            dgPortfolioTradeHistory.DataSource = _tradeHistory;
-        }
-        private void changeActivePortfolioWorker_DoWork(object sender, DoWorkEventArgs e)
-        {
-            if(e.Argument is PortfolioChangeEventArgs changeEventArgs)
-            {
-                _presenter.ChangeActivePortfolio(changeEventArgs.New);
-            }          
         }
 
         public void SetTransactionHistory(IEnumerable<PortfolioTransactionModel> transactions)

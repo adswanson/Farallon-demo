@@ -73,7 +73,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\IPortfolioContextAccessor.cs" />
+    <Compile Include="Services\ApplicationStateAccessor.cs" />
+    <Compile Include="Eventing\EventSet.cs" />
+    <Compile Include="Services\IApplicationStateAccessor.cs" />
     <Compile Include="Services\LocalXmlDataContextAccessor.cs" />
     <EmbeddedResource Include="Controls\PortfolioPicker.resx">
       <DependentUpon>PortfolioPicker.cs</DependentUpon>
