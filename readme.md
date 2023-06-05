@@ -4,6 +4,9 @@ The goal of this project was to adhere to both the guidelines of the assignment 
 tech stack. The UI is a WinForms application targeting the .net framework 4.7.2 runtime. I allowed myself only one Nuget package- NewtonSoft-
 for deserializing JSON.
 
+A copy of this code and readme can be found on my GitHub repository: https://github.com/adswanson/Farallon-demo
+**Note** this repository will set to private after the review period out of respect for the privacy of Farallon's interview process.
+
 ## Code Style
 ### Class Layout
 I try to structure my classes to follow this pattern, from top to bottom:
