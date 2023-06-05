@@ -2,7 +2,15 @@
 	<Portfolios>
 		<PortfolioRecord>
 			<Id>1</Id>
+			<Name>Just AAPL</Name>
+		</PortfolioRecord>
+		<PortfolioRecord>
+			<Id>2</Id>
 			<Name>Tech Stocks</Name>
+		</PortfolioRecord>
+		<PortfolioRecord>
+			<Id>3</Id>
+			<Name>ChatGPT Recommendations (I really bought these)</Name>
 		</PortfolioRecord>
 	</Portfolios>	
 </XmlPortfolio>

@@ -9,5 +9,50 @@
 			<TransactionDate>2023-06-03T10:00:00</TransactionDate>
 			<UnitAmount>10</UnitAmount>
 		</TradeLogRecord>
+		<TradeLogRecord>
+			<TradeLogId>1</TradeLogId>
+			<PortfolioId>2</PortfolioId>
+			<SymbolName>MSFT</SymbolName>
+			<Price>85.95</Price>
+			<TradeType>Buy</TradeType>
+			<TransactionDate>2018-01-02T10:00:00</TransactionDate>
+			<UnitAmount>100</UnitAmount>
+		</TradeLogRecord>
+		<TradeLogRecord>
+			<TradeLogId>2</TradeLogId>
+			<PortfolioId>2</PortfolioId>
+			<SymbolName>GOOG</SymbolName>
+			<Price>1065.00</Price>
+			<TradeType>Buy</TradeType>
+			<TransactionDate>2018-01-02T10:00:00</TransactionDate>
+			<UnitAmount>50</UnitAmount>
+		</TradeLogRecord>
+		<TradeLogRecord>
+			<TradeLogId>3</TradeLogId>
+			<PortfolioId>2</PortfolioId>
+			<SymbolName>MSFT</SymbolName>
+			<Price>87.82</Price>
+			<TradeType>Buy</TradeType>
+			<TransactionDate>2018-01-10T10:00:00</TransactionDate>
+			<UnitAmount>150</UnitAmount>
+		</TradeLogRecord>
+		<TradeLogRecord>
+			<TradeLogId>4</TradeLogId>
+			<PortfolioId>3</PortfolioId>
+			<SymbolName>OTLY</SymbolName>
+			<Price>1.77</Price>
+			<TradeType>Buy</TradeType>
+			<TransactionDate>2023-05-20T10:00:00</TransactionDate>
+			<UnitAmount>112.99173</UnitAmount>
+		</TradeLogRecord>
+		<TradeLogRecord>
+			<TradeLogId>5</TradeLogId>
+			<PortfolioId>3</PortfolioId>
+			<SymbolName>ALTO</SymbolName>
+			<Price>2.24</Price>
+			<TradeType>Buy</TradeType>
+			<TransactionDate>2023-05-20T10:00:00</TransactionDate>
+			<UnitAmount>89.285714</UnitAmount>
+		</TradeLogRecord>
 	</TradeLogEntries>
 </XmlTradeLog>

@@ -40,10 +40,10 @@
             this.tcSubPages.Controls.Add(this.tpTradeHistory);
             this.tcSubPages.Controls.Add(this.tpProfitsAndLossesReport);
             this.tcSubPages.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tcSubPages.Location = new System.Drawing.Point(0, 111);
+            this.tcSubPages.Location = new System.Drawing.Point(0, 99);
             this.tcSubPages.Name = "tcSubPages";
             this.tcSubPages.SelectedIndex = 0;
-            this.tcSubPages.Size = new System.Drawing.Size(952, 339);
+            this.tcSubPages.Size = new System.Drawing.Size(952, 351);
             this.tcSubPages.TabIndex = 2;
             // 
             // tpTradeHistory
@@ -51,7 +51,7 @@
             this.tpTradeHistory.Location = new System.Drawing.Point(4, 22);
             this.tpTradeHistory.Name = "tpTradeHistory";
             this.tpTradeHistory.Padding = new System.Windows.Forms.Padding(3);
-            this.tpTradeHistory.Size = new System.Drawing.Size(944, 313);
+            this.tpTradeHistory.Size = new System.Drawing.Size(944, 325);
             this.tpTradeHistory.TabIndex = 0;
             this.tpTradeHistory.Text = "Trade History";
             this.tpTradeHistory.UseVisualStyleBackColor = true;
@@ -71,7 +71,7 @@
             this.pnlPortfolioPicker.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlPortfolioPicker.Location = new System.Drawing.Point(0, 0);
             this.pnlPortfolioPicker.Name = "pnlPortfolioPicker";
-            this.pnlPortfolioPicker.Size = new System.Drawing.Size(952, 93);
+            this.pnlPortfolioPicker.Size = new System.Drawing.Size(952, 68);
             this.pnlPortfolioPicker.TabIndex = 3;
             // 
             // MainForm
