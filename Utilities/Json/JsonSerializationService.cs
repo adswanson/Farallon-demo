@@ -7,16 +7,8 @@ namespace Utilities.Json
         public TType Deserialize<TType>(string serializedContent)
             where TType : class, new()
         {
-            try
-            {
-                var deserializedResult = JsonConvert.DeserializeObject<TType>(serializedContent);
-                return deserializedResult;
-            }
-            catch
-            {
-                // todo - log error
-                return null;
-            }
+            var deserializedResult = JsonConvert.DeserializeObject<TType>(serializedContent);
+            return deserializedResult;
         }
     }
 }

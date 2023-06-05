@@ -40,7 +40,6 @@ namespace Investment.Presentation.Presenters
 
             if (!result.IsSuccess)
             {
-                // todo - logging
                 _view.SetPortfoliosList(Enumerable.Empty<PortfoliosListItemModel>());
                 return;
             }

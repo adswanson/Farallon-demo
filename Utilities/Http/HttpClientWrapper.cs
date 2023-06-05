@@ -19,27 +19,17 @@ namespace Utilities.Http
         }
 
         public async Task<string> Get(string requestUri)
-        {           
-            try
-            {
-                HttpResponseMessage response;
-                response = await _internalClient.GetAsync(requestUri);
+        {
 
-                if (!response.IsSuccessStatusCode)
-                {
-                    // todo - log warning
-                    return null;
-                }
+            HttpResponseMessage response;
+            response = await _internalClient.GetAsync(requestUri);
 
-                return await response
-                    .Content
-                    .ReadAsStringAsync();
-            }
-            catch (Exception ex)
-            {
-                // todo - log error
-                return null;
-            }               
+            response.EnsureSuccessStatusCode();
+
+            return await response
+                .Content
+                .ReadAsStringAsync();
+
         }
     }
 }
