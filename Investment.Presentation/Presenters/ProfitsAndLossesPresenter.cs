@@ -1,6 +1,8 @@
-﻿using Investment.Component.Domains.Reporting;
+﻿using Investment.Component;
+using Investment.Component.Domains.Reporting;
 using Investment.Presentation.Models;
 using Investment.Presentation.Views;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -41,10 +43,18 @@ namespace Investment.Presentation.Presenters
 
         private async Task UpdateProfitsAndLossesReport(int portfolioId)
         {
-            var reportLineItems = await _profitsAndLossesReportingService.Calculate(portfolioId);
+            var reportLineItems = await Result<IEnumerable<ProfitsAndLossesReportLineItem>>
+                .TryAsync(async () => await _profitsAndLossesReportingService.Calculate(portfolioId));
+
+            if(!reportLineItems.IsSuccess)
+            {
+                _view.SetReport(Enumerable.Empty<ProfitsAndLossesModel>());
+                return;
+            }
 
             _view.SetReport(
                 reportLineItems
+                    .Unwrap()
                     .Select(SelectProfitsAndLossesModel)
                     .OrderBy(rli => rli.Symbol));
         }

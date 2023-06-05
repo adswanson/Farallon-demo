@@ -17,13 +17,8 @@ namespace Investment.UI.Services
                 Previous = _activePortfolioId
             };
 
-            _changePortfolioEvents.OnStart?.Invoke(arguments);
-            _changePortfolioEvents.OnRunSync?.Invoke(arguments);
-
-            if (_changePortfolioEvents.OnRunAsync != null)
-                await _changePortfolioEvents.OnRunAsync(arguments);
-
-            _changePortfolioEvents.OnDone?.Invoke(arguments);
+            await _changePortfolioEvents.Execute(arguments);
+            
             _activePortfolioId = newValue;
         }
 

@@ -1,7 +1,9 @@
-﻿using Investment.Component.Domains.Portfolio;
+﻿using Investment.Component;
+using Investment.Component.Domains.Portfolio;
 using Investment.Presentation.Models;
 using Investment.Presentation.Views;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -34,8 +36,17 @@ namespace Investment.Presentation.Presenters
 
         public void UpdatePortfoliosList()
         {
-            _view.SetPortfoliosList(_portfolioRepository
-                .GetPortfolios()
+            var result = Result<IEnumerable<PortfolioRecord>>.Try(_portfolioRepository.GetPortfolios);
+
+            if (!result.IsSuccess)
+            {
+                // todo - logging
+                _view.SetPortfoliosList(Enumerable.Empty<PortfoliosListItemModel>());
+                return;
+            }
+
+            _view.SetPortfoliosList(result
+                .Unwrap()
                 .OrderBy(p => p.Name)
                 .Select(SelectPortfoliosListItemModel));
         }

@@ -4,7 +4,10 @@ using System.Threading.Tasks;
 
 namespace Utilities.Http
 {
-    public class HttpClientWrapper : IHttpClient
+    /// <summary>
+    /// Wraps around an internal client
+    /// </summary>
+    internal sealed class HttpClientWrapper : IHttpClient
     {
         private HttpClient _internalClient;
         public HttpClientWrapper(HttpClientOptions clientOptions)

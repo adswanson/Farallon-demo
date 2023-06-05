@@ -2,7 +2,8 @@
 
 namespace Utilities.Http
 {
-    public class HttpClientFactory : IHttpClientFactory
+    /// <inheritdoc cref="IHttpClientFactory"/>
+    internal sealed class HttpClientFactory : IHttpClientFactory
     {
         private IReadOnlyDictionary<string, IHttpClient> _clientCache;
 

@@ -5,9 +5,11 @@ using System.Threading.Tasks;
 
 namespace Investment.Component.Domains.Trading
 {
+    /// <summary>
+    /// Service for retrieving symbol quote information
+    /// </summary>
     public interface IQuoteService
     {
-        Task<QuoteRecord> GetHistoricalQuote(string symbol);
         Task<QuoteRecord> GetQuote(string symbol);
     }
 }

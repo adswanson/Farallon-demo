@@ -39,7 +39,7 @@ namespace Investment.UI.Controls
 
         private async Task OnPortfolioChangeAsync(PortfolioChangeEventArgs args)
         {
-            await Task.Run(() =>
+            await Task.Run(async () =>
             {
                 _presenter.ChangeActivePortfolio(args.New);
             });

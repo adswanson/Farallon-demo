@@ -1,6 +1,8 @@
-﻿using Investment.Component.Domains.Trading;
+﻿using Investment.Component;
+using Investment.Component.Domains.Trading;
 using Investment.Presentation.Models;
 using Investment.Presentation.Views;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Investment.Presentation.Presenters
@@ -34,8 +36,17 @@ namespace Investment.Presentation.Presenters
 
         private void UpdateTransactionHistory(int portfolioId)
         {
-            var trades = _tradeLogRepository
-                .GetPortfolioTradeLog(portfolioId)
+            var result = Result<IEnumerable<TradeLogRecord>>.Try(
+                () =>_tradeLogRepository.GetPortfolioTradeLog(portfolioId));
+
+            if(!result.IsSuccess)
+            {
+                _view.SetTransactionHistory(Enumerable.Empty<PortfolioTransactionModel>());
+                return;
+            }
+
+            var trades = result
+                .Unwrap()
                 .OrderByDescending(t => t.TransactionDate)
                 .Select(SelectTransactionModel);
 

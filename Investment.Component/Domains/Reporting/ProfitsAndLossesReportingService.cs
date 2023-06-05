@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace Investment.Component.Domains.Reporting
 {
+    ///<inheritdoc cref="IProfitsAndLossesReportingService"/>
     internal sealed class ProfitsAndLossesReportingService : IProfitsAndLossesReportingService
     {
         private readonly ITradeLogRepository _tradeLogRepository;
@@ -18,16 +19,15 @@ namespace Investment.Component.Domains.Reporting
             _quoteService = quoteService;
         }
 
-        public async Task<IEnumerable<ProfitsAndLossesReportLineItem>> Calculate(int portfolioId, DateTime? startDate = null, DateTime? endDate = null)
+        public async Task<IEnumerable<ProfitsAndLossesReportLineItem>> Calculate(int portfolioId)
         {
             var symbolGroups = _tradeLogRepository
                 .GetPortfolioTradeLog(portfolioId)
-                .Where(t => t.TransactionDate >= (startDate ?? DateTime.MinValue) && t.TransactionDate <= (endDate ?? DateTime.MaxValue))
                 .GroupBy(t => t.SymbolName);
 
             var lineItems = new ConcurrentDictionary<string, ProfitsAndLossesReportLineItem>();
 
-            foreach(var group in symbolGroups)
+            foreach (var group in symbolGroups)
             {
                 var quote = await _quoteService.GetQuote(group.Key);
                 if (quote == null)
@@ -54,11 +54,13 @@ namespace Investment.Component.Domains.Reporting
                     }
                 }
 
-                lineItems[group.Key] = CalculateLineItem(unitsOnHand, cost,realizedGains,quote);
+                lineItems[group.Key] = CalculateLineItem(unitsOnHand, cost, realizedGains, quote);
             }
 
             return lineItems.Values;
         }
+
+
 
         private ProfitsAndLossesReportLineItem CalculateLineItem(decimal unitsOnHand, decimal cost,
             decimal realizedGains, QuoteRecord quote)

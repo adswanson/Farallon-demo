@@ -4,6 +4,7 @@ using System.Linq;
 
 namespace Investment.Component.Domains.Trading
 {
+    /// <inheritdoc cref="ITradeLogRepository"/>
     internal sealed class XmlFileTradeLogRepository : ITradeLogRepository
     {
         private readonly IXmlFileDataProvider _xmlFileDataProvider;

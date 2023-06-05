@@ -7,6 +7,7 @@ using System.Xml.Serialization;
 
 namespace Investment.Component.Domains.Portfolio
 {
+    /// <inheritdoc cref="IPortfolioRepository"/>
     internal sealed class XmlFilePortfolioRepository : IPortfolioRepository
     {
         private readonly IXmlFileDataProvider _xmlFileDataProvider;
@@ -22,14 +23,7 @@ namespace Investment.Component.Domains.Portfolio
 
         public IEnumerable<PortfolioRecord> GetPortfolios()
         {
-            return Portfolio?.Portfolios ?? Enumerable.Empty<PortfolioRecord>();
-        }
-
-        public PortfolioRecord GetPortfolio(int id)
-        {
-            return Portfolio?
-                .Portfolios?
-                .FirstOrDefault(p => p.Id == id);
+            return Portfolio.Portfolios;
         }
     }
 }

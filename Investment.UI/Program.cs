@@ -1,5 +1,6 @@
 ﻿using Investment.Component;
 using Investment.Component.Domains.Trading;
+using Investment.Presentation;
 using Investment.Presentation.Views;
 using Investment.UI.Controls;
 using Investment.UI.Services;
@@ -27,6 +28,7 @@ namespace Investment.UI
                 .AddOptions()
                 .AddApplicationDependencies()
                 .AddJsonSerializer()
+                .AddPresentationServices()
                 .AddInvestmentDependencies<LocalXmlDataContextAccessor>();
 
             using(var container = containerBuilder.Build())

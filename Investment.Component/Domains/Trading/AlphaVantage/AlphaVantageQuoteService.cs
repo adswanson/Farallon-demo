@@ -5,6 +5,9 @@ using Utilities.Json;
 
 namespace Investment.Component.Domains.Trading.AlphaVantage
 {
+    /// <summary>
+    /// Calls the AlphaVantage REST API for symbol quote information
+    /// </summary>
     internal sealed class AlphaVantageQuoteService : IQuoteService
     {
         private const string GlobalQuote = "GLOBAL_QUOTE";
@@ -51,19 +54,6 @@ namespace Investment.Component.Domains.Trading.AlphaVantage
             {
                 return null;
             }
-        }
-
-        public async Task<QuoteRecord> GetHistoricalQuote(string symbol)
-        {
-            var endpoint = ConstructEndpoint(TimeSeriesDailyAdjusted, symbol);
-
-            await Task.Delay(400000);
-
-            var quote = await _httpClient.Get(endpoint);
-            if (quote == null)
-                return null;
-
-            return _jsonSerializationService.Deserialize<QuoteRecord>(quote);
         }
 
         private string ConstructEndpoint(string operation, string symbol)

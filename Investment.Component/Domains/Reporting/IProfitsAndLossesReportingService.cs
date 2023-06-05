@@ -4,8 +4,11 @@ using System.Threading.Tasks;
 
 namespace Investment.Component.Domains.Reporting
 {
+    /// <summary>
+    /// Service for calculating Profit and Loss reports
+    /// </summary>
     public interface IProfitsAndLossesReportingService
     {
-        Task<IEnumerable<ProfitsAndLossesReportLineItem>> Calculate(int portfolioId, DateTime? startDate = null, DateTime? endDate = null);
+        Task<IEnumerable<ProfitsAndLossesReportLineItem>> Calculate(int portfolioId);
     }
 }
