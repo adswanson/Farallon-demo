@@ -5,10 +5,10 @@ namespace Investment.Presentation.Models
     public sealed class PortfolioTransactionModel
     {
         public string SymbolName { get; set; }
-        public TradeTypeModel TransactionType { get; set; }
-        public decimal PurchasePrice { get; set; }
-        public decimal PurchaseAmount { get; set; }
-        public decimal TotalAmount { get; set; }
-        public DateTime TradeDate { get; set; }
+        public string TransactionType { get; set; }
+        public string PurchasePrice { get; set; }
+        public string PurchaseAmount { get; set; }
+        public string TotalAmount { get; set; }
+        public string TradeDate { get; set; }
     }
 }

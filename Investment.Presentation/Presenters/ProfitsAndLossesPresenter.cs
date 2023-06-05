@@ -63,15 +63,15 @@ namespace Investment.Presentation.Presenters
         {
             return new ProfitsAndLossesModel
             {
-                DailyProfitsAndLosses = lineItem.DailyProfitsAndLosses,
-                Cost = lineItem.Cost,
-                InceptionProfitsAndLosses = lineItem.InceptionProfitsAndLosses,
-                LastTradeDate = lineItem.LastTradeDate,
-                MarketValue = lineItem.MarketValue,
-                PreviousClose = lineItem.PreviousClose,
-                Price = lineItem.Price,
+                DailyProfitsAndLosses = string.Format("{0:C2}", lineItem.DailyProfitsAndLosses),
+                Cost = string.Format("{0:C2}", lineItem.Cost),
+                InceptionProfitsAndLosses = string.Format("{0:C2}", lineItem.InceptionProfitsAndLosses),
+                LastTradeDate = lineItem.LastTradeDate.ToString("M/dd/yyyy"),
+                MarketValue = string.Format("{0:C2}", lineItem.MarketValue),
+                PreviousClose = string.Format("{0:C2}", lineItem.PreviousClose),
+                Price = string.Format("{0:C2}", lineItem.Price),
                 Quantity = lineItem.Quantity,
-                RealizedGains = lineItem.RealizedGains,
+                RealizedGains = string.Format("{0:C2}", lineItem.RealizedGains),
                 Symbol = lineItem.Symbol
             };
         }

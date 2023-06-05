@@ -57,26 +57,26 @@ namespace Investment.Presentation.Presenters
         {
             return new PortfolioTransactionModel
             {
-                TransactionType = ToTradeTypeModel(trade.TradeType),
-                PurchaseAmount = trade.UnitAmount,
-                PurchasePrice = trade.Price,
+                TransactionType = ToTradeDescription(trade.TradeType),
+                PurchaseAmount = string.Format("{0:C2}", trade.UnitAmount),
+                PurchasePrice = string.Format("{0:C2}", trade.Price),
                 SymbolName = trade.SymbolName,
-                TradeDate = trade.TransactionDate,
-                TotalAmount = trade.UnitAmount * trade.Price,
+                TradeDate = trade.TransactionDate.ToString("M/dd/yyyy"),
+                TotalAmount = string.Format("{0:C2}", trade.UnitAmount * trade.Price)
             };
         }
 
-        private TradeTypeModel ToTradeTypeModel(TradeType tradeType)
+        private string ToTradeDescription(TradeType tradeType)
         {
             switch (tradeType)
             {
                 default:
                 case TradeType.Unknown:
-                    return TradeTypeModel.Unknown;
+                    return "Unknown";
                 case TradeType.Buy:
-                    return TradeTypeModel.Buy;
+                    return "Buy";
                 case TradeType.Sell:
-                    return TradeTypeModel.Sell;
+                    return "Sell";
             }
         }
 

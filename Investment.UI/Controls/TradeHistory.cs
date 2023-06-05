@@ -39,7 +39,7 @@ namespace Investment.UI.Controls
 
         private async Task OnPortfolioChangeAsync(PortfolioChangeEventArgs args)
         {
-            await Task.Run(async () =>
+            await Task.Run(() =>
             {
                 _presenter.ChangeActivePortfolio(args.New);
             });
@@ -64,8 +64,8 @@ namespace Investment.UI.Controls
             {
                 dataTable.Rows.Add(
                     transaction.SymbolName ?? "Undefined",
-                    transaction.TradeDate.Date.ToString(),
-                    ToTradeTypeDescription(transaction.TransactionType),
+                    transaction.TradeDate,
+                    transaction.TransactionType,
                     transaction.PurchaseAmount,
                     transaction.PurchasePrice,
                     transaction.TotalAmount
@@ -73,20 +73,6 @@ namespace Investment.UI.Controls
             }
 
             return dataTable;
-        }
-
-        private string ToTradeTypeDescription(TradeTypeModel tradeTypeModel)
-        {
-            switch (tradeTypeModel)
-            {
-                default:
-                case TradeTypeModel.Unknown:
-                    return "Undefined";
-                case TradeTypeModel.Buy:
-                    return "Buy";
-                case TradeTypeModel.Sell:
-                    return "Sell";
-            }
         }
     }
 }
