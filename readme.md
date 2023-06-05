@@ -107,3 +107,4 @@ There's a distinct lack of logging throughout the project. Unfortunately this wa
 - Refactoring the UI to a component tree model
 - Localization
 - Refactoring eventing, currently ALL 'on changing' events must complete before the 'done changing' events fire
+- UI polish, some elements aren't anchored correctly
