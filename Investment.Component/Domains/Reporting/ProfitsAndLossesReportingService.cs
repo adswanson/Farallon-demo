@@ -13,7 +13,7 @@ namespace Investment.Component.Domains.Reporting
         private readonly ITradeLogRepository _tradeLogRepository;
         private readonly IQuoteService _quoteService;
 
-        private ProfitsAndLossesReportingService(ITradeLogRepository tradeLogRepository, IQuoteService quoteService)
+        internal ProfitsAndLossesReportingService(ITradeLogRepository tradeLogRepository, IQuoteService quoteService)
         {
             _tradeLogRepository = tradeLogRepository;
             _quoteService = quoteService;
@@ -29,47 +29,49 @@ namespace Investment.Component.Domains.Reporting
 
             foreach (var group in symbolGroups)
             {
-                var quote = await _quoteService.GetQuote(group.Key);
-                if (quote == null)
-                {
-                    // todo - log
-                    continue;
-                }
-
-                decimal realizedGains = 0;
-                decimal unitsOnHand = 0;
-                decimal cost = 0;
-
-                foreach (var trade in group.OrderBy(t => t.TransactionDate))
-                {
-                    if (trade.TradeType == TradeType.Buy)
-                    {
-                        unitsOnHand += trade.UnitAmount;
-                        cost += trade.UnitAmount * trade.Price;
-                    }
-                    else if (trade.TradeType == TradeType.Sell)
-                    {
-                        unitsOnHand -= trade.UnitAmount;
-                        realizedGains += trade.UnitAmount * trade.Price;
-                    }
-                }
-
-                lineItems[group.Key] = CalculateLineItem(unitsOnHand, cost, realizedGains, quote);
+                lineItems[group.Key] = await AggregateSymbolTrades(group.Key, group);
             }
 
             return lineItems.Values;
         }
 
-
-
-        private ProfitsAndLossesReportLineItem CalculateLineItem(decimal unitsOnHand, decimal cost,
-            decimal realizedGains, QuoteRecord quote)
+        private async Task<ProfitsAndLossesReportLineItem> AggregateSymbolTrades(string symbol, IEnumerable<TradeLogRecord> trades)
         {
-            var marketValue = unitsOnHand * quote.Price;
-            var previousDayMarketValue = unitsOnHand * quote.PreviousClose;
+            var quote = await _quoteService.GetQuote(symbol);
 
-            var dailyPandL = marketValue - previousDayMarketValue;
-            var inceptionPandL = marketValue + realizedGains - cost;
+            if (quote == null)
+            {
+                throw new Exception($"Unable to retrieve quote for {symbol}");
+            }
+
+            decimal realizedGains = 0;
+            decimal unitsOnHand = 0;
+            decimal cost = 0;
+            decimal purchasedToday = 0;
+
+            foreach (var trade in trades.OrderBy(t => t.TransactionDate))
+            {
+                if (trade.TradeType == TradeType.Buy)
+                {
+                    unitsOnHand += trade.UnitAmount;
+                    cost += trade.UnitAmount * trade.Price;
+                }
+                else if (trade.TradeType == TradeType.Sell)
+                {
+                    unitsOnHand -= trade.UnitAmount;
+                    realizedGains += trade.UnitAmount * trade.Price;
+                }
+
+                if (trade.TransactionDate > DateTime.Now.Date)
+                {
+                    purchasedToday += trade.UnitAmount;
+                }
+            }
+
+            decimal marketValue = unitsOnHand * quote.Price;
+            decimal previousDayMarketValue = (unitsOnHand - purchasedToday) * quote.PreviousClose;
+            decimal dailyPandL = marketValue - previousDayMarketValue;
+            decimal inceptionPandL = marketValue + realizedGains - cost;
 
             return new ProfitsAndLossesReportLineItem
             {
